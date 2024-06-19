@@ -1,25 +1,27 @@
-import { useState, useEffect, useRef } from 'react'
-import "./App.css"
-import { uploadFile } from './services/api';
+import { useState, useEffect, useRef } from 'react';
+import "./App.css"; 
+import { uploadFile } from './services/api.js';
 
 function App() {
 
   const [file, setFile] = useState('');
   console.log(file);
   const fileInputRef = useRef();
-  
-  useEffect(()=>{
-     const getImage = async ()=>{
-        if(file){
-           const data = new FormData();
-           data.append('name',file.name);
-           data.append('file',file);
 
-           const response = await uploadFile(data);
-           console.log(response);
-        }
-     };
-     getImage();
+  useEffect(() => {
+    const getImage = async () => {
+      if (file) {
+        const data = new FormData();
+        data.append('name', file.name);
+        data.append('file', file);
+
+        const response = await uploadFile(data);
+        console.log(response);
+      }
+    };
+
+    getImage();
+    
   }, [file]);
 
 
