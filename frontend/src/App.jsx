@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import "./App.css"; 
+import "./App.css";
 import { uploadFile } from './services/api.js';
 
 function App() {
 
   const [file, setFile] = useState('');
+  const [result, setResult] = useState('');
   console.log(file);
   const fileInputRef = useRef();
 
@@ -16,18 +17,22 @@ function App() {
         data.append('file', file);
 
         const response = await uploadFile(data);
-        console.log(response);
+        setResult(response.path);
       }
     };
 
     getImage();
-    
+
   }, [file]);
 
 
   const onUploadClick = () => {
     fileInputRef.current.click();
   };
+
+  // const afterUploadClick = () => {
+  //   fileInputRef.current.click();
+  // };
 
   return (
     <div className='main-wrapper'>
@@ -45,6 +50,9 @@ function App() {
             style={{ display: "none" }}
             onChange={(e) => setFile(e.target.files[0])}
           />
+          
+          {/* <button onClick={() => afterUploadClick()}> Download </button> */}
+          <a href={result}> {result} </a>
 
         </div>
       </div>
