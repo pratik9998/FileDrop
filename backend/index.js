@@ -6,9 +6,13 @@
 import express from 'express';
 import DBConnection from './database/db.js';
 import router from './routes/routes.js';
-const app = express(); 
+import cors from 'cors'; //to handle request from one port to another port
+//here our frontend is running on port 5173 and backend is running on port 8000
+//so we need this
+const app = express();
 
 //middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,8 +20,8 @@ app.use('/', router);
 
 DBConnection();
 
-app.get('/', (req,res) =>{
-   console.log("hello world");
+app.get('/', (req, res) => {
+    console.log("hello world");
 });
 
 app.listen(8000, () => {
