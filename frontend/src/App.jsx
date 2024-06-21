@@ -30,10 +30,6 @@ function App() {
     fileInputRef.current.click();
   };
 
-  // const afterUploadClick = () => {
-  //   fileInputRef.current.click();
-  // };
-
   return (
     <div className='main-wrapper'>
       <div className='container'>
@@ -50,9 +46,8 @@ function App() {
             style={{ display: "none" }}
             onChange={(e) => setFile(e.target.files[0])}
           />
-          
-          {/* <button onClick={() => afterUploadClick()}> Download </button> */}
-          <a href={result}> {result} </a>
+
+          <a href={result}> <button> Download </button> </a>
 
         </div>
       </div>
