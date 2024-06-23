@@ -47,7 +47,7 @@ function App() {
             onChange={(e) => setFile(e.target.files[0])}
           />
 
-          <a href={result}> <button> Download </button> </a>
+          <a href={result}></a>
 
         </div>
       </div>
