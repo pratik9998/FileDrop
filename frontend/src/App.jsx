@@ -47,7 +47,7 @@ function App() {
             onChange={(e) => setFile(e.target.files[0])}
           />
 
-          <a href={result}></a>
+          <a href={result}>{result}</a>
 
         </div>
       </div>
